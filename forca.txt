@@ -1,0 +1,40 @@
+def jogar():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+    palavra_secreta = "python"
+    letras_acertadas = ["_" for letra in palavra_secreta]
+
+    enforcou = False
+    acertou = False
+    tentativas = 0
+
+    while(not enforcou and not acertou):
+        chute = input("Qual letra? ")
+        chute = chute.strip().lower()
+
+        if chute in palavra_secreta:
+            index = 0
+            for letra in palavra_secreta:
+                if chute == letra:
+                    letras_acertadas[index] = letra
+                index += 1
+        else:
+            tentativas += 1
+            print("Ops, você errou! Tentativas restantes: {}".format(6 - tentativas))
+            if tentativas == 6:
+                enforcou = True
+
+        print(letras_acertadas)
+
+        if "_" not in letras_acertadas:
+            acertou = True
+
+    if acertou:
+        print("Parabéns, você acertou a palavra secreta!")
+    else:
+        print("Que pena, você não conseguiu acertar a palavra secreta :(")
+
+if __name__ == "__main__":
+    jogar()
